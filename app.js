@@ -23,6 +23,12 @@ app.use(express.urlencoded({ extended: true})); //POST undefined if you leave th
 app.use(morgan('dev'));
 
 
+// Serve index.js view
+app.get('/', (req,res) => {
+    res.render('index');
+})
+
+
 // 404 
 app.use((req, res) => {
     res.status(404).render('404', { name: '404'})
