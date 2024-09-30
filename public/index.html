@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/styles.css">
+    <title>Task-Tamarin</title>
+</head>
+<body>
+    <div id="page-wrapper"> <!--Content wrapper   -->
+
+        <div class="flex flex-wrap justify-between items-center  border-2 p-2"> <!--Logo and Navigation   -->
+            <div>
+                <h1 class="text-4xl text-blue-500 font-bold">Task.Tamarin</h1>
+            </div>
+            
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#">Tasks</a></li>
+                    <li><a href="#">Calender</a></li>
+                    <li><a href="#">Reminder</a></li>
+                    <li><a href="#">Statistics</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="task-input" class=" flex flex-wrap flex-col md:flex-row items-center justify-center p-2 m-2 space-x-6">
+            <div class="task m-2 rounded-xl">
+                <label for="task-input">Task</label>
+                <input type="text" class="border-2 rounded-xl p-2 shadow-inner">
+            </div>
+            <div class="date m-2" >
+                <label for="date-input">Date</label>
+                <input type="date" class="border-2 rounded-xl p-2">
+            </div>
+                        
+            <button class="border-2 mx-auto md:mx:0 p-2 m-2 bg-blue-500 text-white rounded-xl">Submit</button>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="main-wrapper" class="grid lg:grid-cols-3 gap-10 items-center p-2">
+            <div class="border-2 text-center rounded-xl p-2 shadow-md"><h1>22:53</h1><h1>30-Sept-2024</h1></div>
+            <div class="border-2 text-center rounded-xl p-2 shadow-md">Daily Goals</div>
+            <div class="border-2 text-center rounded-xl p-2 shadow-md">Weekly Goals</div>
+            <div class="border-2 text-center rounded-xl p-2 shadow-md">Food for thought</div>
+            <div class="border-2 text-center rounded-xl p-2 shadow-md">Notes</div>
+            <div class="border-2 text-center rounded-xl p-2 shadow-md"><h1>Pomodoro</h1><h1>30:00</h1><button>start</button></div>
+        </div>
+
+
+
+    </div> <!--Content wrapper end   -->
+</body>
+</html>
+
