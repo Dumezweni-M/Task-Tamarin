@@ -1,66 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Task-Tamarin</title>
-</head>
+<%- include('./partials/header.ejs') %>
+
 <body>
     <div id="page-wrapper"> <!--Content wrapper   -->
 
-        <div class="flex flex-wrap justify-between items-center  border-2 p-2"> <!--Logo and Navigation   -->
-            <div>
-                <h1 class="text-4xl text-blue-500 font-bold">Task.Tamarin</h1>
-            </div>
-            
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="#">Tasks</a></li>
-                    <li><a href="#">Calender</a></li>
-                    <li><a href="#">Reminder</a></li>
-                    <li><a href="#">Statistics</a></li>
-                </ul>
-            </nav>
-        </div>
+        <%- include('./partials/nav.ejs') %>  <!--  Logo and NAvigation   -->
 
-        <div id="task-input" class=" flex flex-wrap flex-col md:flex-row items-center justify-center p-2 m-2 space-x-6">
-            <div class="task m-2 rounded-xl">
-                <label for="task-input">Task</label>
-                <input type="text" class="border-2 rounded-xl p-2 shadow-inner">
-            </div>
-            <div class="date m-2" >
-                <label for="date-input">Date</label>
-                <input type="date" class="border-2 rounded-xl p-2">
-            </div>
-                        
-            <button class="border-2 mx-auto md:mx:0 p-2 m-2 bg-blue-500 text-white rounded-xl">Submit</button>
-        </div>
+        <%- include('./partials/task-input.ejs') %>  <!--  Task input section   -->
 
-        <!-- Dashboard -->
-        <div id="main-wrapper" class="grid lg:grid-cols-3 gap-6 items-center p-2">
-            <div class="border-2 text-center rounded-xl shadow-sm w-1/2 bg-gradient-to-b from-blue-500 to-purple-500 p-6 text-white font-bold">
-                <h1>22:53</h1>
-                <h1>30-Sept-2024</h1>
-                
-            </div>
-            <div class="border-2 text-center rounded-xl p-2 shadow-sm">Daily Goals</div>
-            <div class="border-2 text-center rounded-xl p-2 shadow-sm"><h1>Pomodoro</h1><h1>30:41</h1><button>start</button></div>
-
-            <div class="border-2 text-center rounded-xl p-2 shadow-sm">Weekly Goals</div>
-            <div class="border-2 text-center rounded-xl p-4 shadow-sm">
-                <h2 class="font-bold">Food for thought</h2>
-                <p >"I've grown to realize that, the more I practice, The luckier I get" - Thomas Jefferson</p>
-            </div>
-
-
-
-
-            <div class="border-2 text-center rounded-xl p-2 shadow-sm ">Notes</div>
-            
-        </div>
-
-
+        <%- include('./partials/dashboard.ejs') %>  <!--  Main page   -->
 
     </div> <!--Content wrapper end   -->
 </body>
