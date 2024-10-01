@@ -1,5 +1,6 @@
 const PORT = 3000;
 
+
 const express = require('express');
 const morgan = require('morgan'); //For debugging and monitoring
 const mongodb = require('mongodb');
@@ -9,7 +10,11 @@ const Task = require('./models/tasks')
 
 const app = express();
 
-const dbURI = 'mongodb+srv://slowmonkey:test123456@slowmonkey.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
+// Const URI
+require('dotenv').config();
+
+const dbURI = process.env.DB_URI;
+
 mongoose.connect(dbURI)
     .then((result) => app.listen(PORT))
     .catch((err) => console.log(err))
