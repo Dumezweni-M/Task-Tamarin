@@ -1,47 +1,103 @@
-<div id="main-wrapper" class="grid lg:grid-cols-3 gap-6 items-center p-2">
-
-
+<div id="main-wrapper" class="grid lg:grid-cols-2 gap-6 items-center p-6">   
     
-    
-    
-    <div class="time-date">
-        <div class="border-2 text-center rounded-xl shadow-sm bg-gradient-to-b from-blue-500 to-purple-500 p-6 text-white font-bold">
-            <h1 class="text-4xl">22:53</h1>
-            <h1 class="text-3xl">30-Sept-2024</h1>
+    <div class="time-date">  <!-- Date and Time -->
+        
+        <div class="border-2 text-center shadow-sm font-bold">
+            <h1 class="text-4xl m-2 w-1/4">Countdown Timer</h1>
+            <h1 class="text-3xl m-2">35:00</h1>
+            <button class="border-2 p-2 m-2" >Start</button>
+            <button class="border-2 p-2 m-2" >Reset</button>
         </div>
-        <div class="border-2 text-center rounded-xl shadow-sm bg-gradient-to-b from-blue-500 to-purple-500 p-6 text-white font-bold">
-            <h1 class="text-4xl">Pomodoro Timer</h1>
-            <h1 class="text-3xl">30:41</h1>
-            <button>start</button></div>
     </div>
     
 
-    
-    <div class="border-2 text-center p-2 shadow-sm ">  <!-- Daily Tasks -->
-        <div><h1 class="text-2xl font-bold">Daily Tasks</h1></div>
+
+
+    <div class="border-2 text-center p-2 shadow-sm"> <!-- Daily Tasks -->
+        <div>
+            <h1 class="text-xl font-bold">Daily Tasks</h1>
+        </div>
         <ul>
             <% tasks.forEach(task => { %>  
-                <li class="flex items-center justify-between p-2 border-b">
-                    <div class="flex items-center space-x-4">
-                        <h3>&rarr; <%= task.task %></h3>
+                <li class="flex justify-between p-2 border-b">
+                    <div class="flex-1 flex items-center space-x-4">
+                        <div class="w-6 h-6 relative">
+                            <img src="/task-list.svg" alt="trashcan" class="absolute inset-0 w-full h-full object-contain">
+                        </div>
+                        
+                        <h3 class="text-sm"><span class="font-bold"></span> <%= task.task %></h3>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <h3>Due: <%= task.date ? new Date(task.date).toLocaleDateString() : 'No due date' %></h3>
-                        <button class="border-2 p-2">Delete</button> <!-- Add delete button functionality as needed -->
+    
+                    <div class="flex-1 flex items-center justify-end space-x-4"> <!-- Date/Delete section -->
+                        <h3 class="text-sm text-blue-500">Due: <%= task.date ? new Date(task.date).toLocaleDateString() : 'No due date' %></h3>  
+                        
+                        <button class="deleteButton p-2">
+                            <div class="w-6 h-6 relative">
+                                <img src="/trashcan.svg" alt="trashcan" class="absolute inset-0 w-full h-full object-contain">
+                            </div>
+                        </button>
                     </div>
                 </li>
             <% }); %>
         </ul>
     </div>
 
+    <script>
+        const deleteButtons = document.querySelectorAll('.deleteButton');
+
+        deleteButtons.forEach(deleteButton => {
+            deleteButton.addEventListener('click', (e) => {
+                const endpoint = `/delete/${deleteButton.dataset.doc}`; // Correct endpoint
+
+                fetch(endpoint, {
+                    method: 'DELETE'
+                })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json(); // Parse JSON response
+                })
+                .then((data) => {
+                    window.location.href = data.redirect; // Redirect on successful delete
+                })
+                .catch((err) => console.log('Error:', err));
+            });
+        });
+    </script>
+
+
+
+
+
+    
+    
+ 
     
 
-    <div class="border-2 text-center p-2 shadow-sm">Weekly Goals</div>
+    
+
+
+    
+
+    
 
     <div class="border-2 text-center p-4 shadow-sm">
         <h2 class="font-bold">Food for thought</h2>
         <p>"I've grown to realize that, the more I practice, The luckier I get" - Thomas Jefferson</p>
     </div>
 
-    <div class="border-2 text-center p-2 shadow-sm">Notes</div>
+    <div class="border-2 p-4 shadow-sm"> <!-- Notes -->
+        <h1 class="text-2xl font-bold" >Notes</h1>
+        <div class="text-left">
+            <p class="m-2"> &#10536; All notes will be here</p>
+            <p class="m-2"> &#10140; Notes can be expandable</p>
+            <p class="m-2"> &#10162; Maybe adding some progress charts</p>
+            <p class="m-2"> &#10132; What else can I think of?</p>
+            <p class="m-2"> &darr; Dont forget to add delete functionality</p>
+            <p class="m-2"> &darr; Maybe lets browse around for designs</p>
+        </div>
+        
+        
+    </div>
 </div>

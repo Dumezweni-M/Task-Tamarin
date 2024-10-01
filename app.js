@@ -1,6 +1,5 @@
 const PORT = 3000;
 
-
 const express = require('express');
 const morgan = require('morgan'); //For debugging and monitoring
 const mongodb = require('mongodb');
@@ -11,13 +10,10 @@ const Task = require('./models/tasks')
 const app = express();
 
 // Const URI
-require('dotenv').config();
-
-const dbURI = process.env.DB_URI;
-
+const dbURI = 'mongodb+srv://slowmonkey:<password>@slowmonkey.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
 mongoose.connect(dbURI)
     .then((result) => app.listen(PORT))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log('Connection Issues --------> ' + err))
 
 
 // Register view engine
@@ -32,7 +28,7 @@ app.use(morgan('dev'));
 
 //Get items already stored in db
 app.get('/', (req, res) => {
-    Task.find()
+    Task.find().sort({ createdAt: -1})
         .then(tasks => {
             res.render('index', {tasks});
         })
@@ -56,10 +52,28 @@ app.post('/add-task', (req, res) => {
         });
 });
 
-
+// Find and delete entry using id
+app.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    Task.findByIdAndDelete(id)
+        .then(result => {
+            res.json( {redirect: '/'});
+            console.log('Deleted')
+        })
+        .catch(err => {
+            console.log('Deletion was not successful', err)
+            res.Status(500).send('Error deleting the task')
+        });
+});
 
 
 // 404 
 app.use((req, res) => {
     res.status(404).render('404', { name: '404'})
 });
+
+
+
+
+
+
