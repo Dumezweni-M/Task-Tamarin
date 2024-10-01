@@ -8,7 +8,7 @@ const taskSchema = new Schema({
     },
     date: {
         type: Date,
-        require: false
+        required: false
     }
 }, {timestamps: true});
 

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build-css": "tailwindcss build src/styles.css -o public/styles.css",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "node-css-build": "npm run build-css && npm run dev"
   },
   "keywords": [],
   "author": "",

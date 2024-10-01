@@ -21,16 +21,21 @@ app.set('view engine', 'ejs');
 // Middleware & Static for permissions - Makes files in public folder accessible
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true})); //POST undefined if you leave this out
-
 app.use(morgan('dev'));
 
 
-// Serve index.js view
-app.get('/', (req,res) => {
-    res.render('index');
-})
 
-
+//Get items already stored in db
+app.get('/', (req, res) => {
+    Task.find()
+        .then(tasks => {
+            res.render('index', {tasks});
+        })
+        .catch(err => {
+            console.log('Zero tasks found dude!: ', err);
+            res.status(500).send('Server Error')
+        });
+});
 
 // New task entry
 app.post('/add-task', (req, res) => {
@@ -45,6 +50,8 @@ app.post('/add-task', (req, res) => {
             res.status(500).send('Server Error');
         });
 });
+
+
 
 
 // 404 
