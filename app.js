@@ -5,6 +5,8 @@ const morgan = require('morgan'); //For debugging and monitoring
 const mongodb = require('mongodb');
 const mongoose = require('mongoose')
 
+const Task = require('./models/tasks')
+
 const app = express();
 
 const dbURI = 'mongodb+srv://slowmonkey:test123456@slowmonkey.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
@@ -27,6 +29,22 @@ app.use(morgan('dev'));
 app.get('/', (req,res) => {
     res.render('index');
 })
+
+
+
+// New task entry
+app.post('/add-task', (req, res) => {
+    const task = new Task(req.body);  // Create a new task from the submitted data
+
+    task.save()
+        .then(() => {
+            res.redirect('/');  // Redirect to the index page after saving
+        })
+        .catch((err) => {
+            console.log('Error saving task:', err);
+            res.status(500).send('Server Error');
+        });
+});
 
 
 // 404 

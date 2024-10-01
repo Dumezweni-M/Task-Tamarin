@@ -1,0 +1,12 @@
+<form action="/add-task" method="post" id="task-input" class=" flex flex-wrap flex-col md:flex-row items-center justify-center p-2 m-2 space-x-6">
+    <div class="task m-2 rounded-xl">
+        <label for="task-input">Task</label>
+        <input type="text" name="task" id="task-input" class="border-2 p-2 shadow-inner" required>
+    </div>
+    <div class="date m-2" >
+        <label for="date-input">Date</label>
+        <input type="date" name="date" id="date-input" class="border-2 rounded-xl p-2">
+    </div>
+                
+    <button type="submit" class="border-2 mx-auto md:mx-0 p-2 m-2 bg-blue-500 text-white rounded-xl">Submit</button>
+</form>
