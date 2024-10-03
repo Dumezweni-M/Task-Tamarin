@@ -10,7 +10,7 @@ const Task = require('./models/tasks')
 const app = express();
 
 // Const URI
-const dbURI = 'mongodb+srv://slowmonkey:<password>@slowmonkey.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
+const dbURI = 'mongodb+srv://.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
 mongoose.connect(dbURI)
     .then((result) => app.listen(PORT))
     .catch((err) => console.log('Connection Issues --------> ' + err))
@@ -28,7 +28,8 @@ app.use(morgan('dev'));
 
 //Get items already stored in db
 app.get('/', (req, res) => {
-    Task.find().sort({ createdAt: -1})
+    Task.find()
+        .sort({ date: 1})   //Matches database entry.
         .then(tasks => {
             res.render('index', {tasks});
         })
@@ -62,7 +63,7 @@ app.delete('/delete/:id', (req, res) => {
         })
         .catch(err => {
             console.log('Deletion was not successful', err)
-            res.Status(500).send('Error deleting the task')
+            res.status(500).send('Error deleting the task')
         });
 });
 

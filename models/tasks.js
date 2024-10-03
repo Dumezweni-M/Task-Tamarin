@@ -9,6 +9,11 @@ const taskSchema = new Schema({
     date: {
         type: Date,
         required: false
+    },
+    priority: {
+        type: String, 
+        enum: ['low', 'medium', 'high'], //Case must match
+        required: true
     }
 }, {timestamps: true});
 

@@ -1,18 +1,22 @@
-<div class="flex flex-wrap justify-between items-center  border-2 p-2"> <!--Logo and Navigation   -->
+<div class="flex flex-wrap justify-between items-center border-2 p-2 bg-white"> <!-- Logo and Navigation -->
     
-    <div>
-        <h1 class=" flex text-4xl text-blue-500 font-bold">Task.Tamarin</h1>
-        <div class="w-10 h-10 relative">
-            <img src="/public/tamarin.svg" alt="trashcan" class="absolute inset-0 w-full h-full object-contain">
-        </div>
+    <div class="flex items-center"> <!-- Center the logo and title -->
+        <h1 class="flex text-4xl ml-2 text-gray-500 font-bold items-center">
+            Task
+            <div class="w-24 h-24 relative ml-2"> <!-- Added margin for spacing -->
+                <img src="/tamarin-monkey.svg" alt="tamarin monkey" class="absolute inset-0 w-full h-full object-contain">
+            </div>
+            Tamarin
+        </h1>
     </div>
+
     
     <nav>
-        <ul class="flex space-x-4">
-            <li><a href="#">Tasks</a></li>
-            <li><a href="#">Calender</a></li>
-            <li><a href="#">Reminder</a></li>
-            <li><a href="#">Statistics</a></li>
+        <ul class="flex space-x-4 mr-2">
+            <li><a href="#">All Tasks</a></li>
+            <li><a href="#">Low Priority</a></li>
+            <li><a href="#">Mid Priority</a></li>
+            <li><a href="#">High Priority</a></li>
         </ul>
     </nav>
 </div>

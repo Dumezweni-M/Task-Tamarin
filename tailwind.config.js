@@ -4,7 +4,11 @@ module.exports = {
     "./views/**/*.ejs",
     "./public/**/*.{html, js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
