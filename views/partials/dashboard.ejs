@@ -1,121 +1,55 @@
-<div id="main-wrapper" class="flex flex-wrap justify-center w-full p-6 md:p-12 lg:p-8">
-
-    <div class="w-[100%]">
-        <!-- Responsive setting -->
-        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-6 items-start"> 
-
-            <!-- First Column: Long term list -->
-            <div class="border-2 text-center shadow-lg rounded-md bg-white lg:p-6 col-span-1"> 
-                
-                <div>
-                    <h1 class="text-2xl flex font-bold mb-4 font-sans">
-                        Ongoing
-                            <div class="w-12 h-12 relative ml-2"> 
-                                <img src="/tamarin-monkey.svg" alt="tamarin monkey" class="absolute inset-0 w-full h-full object-contain">
-                            </div>
-                        Objectives
-                    </h1>
-                </div>
-                <ul>
-                    <% tasks.forEach(task => { %>  
-                        <li class="flex justify-between p-2 border-r-xl">
-                            <div class="flex-1 flex items-center space-x-4">
-                                <!-- <div class="w-6 h-6 relative">
-                                    <img src="/task-list.svg" alt="task icon" class="absolute inset-0 w-full h-full object-contain">
-                                </div> -->
-                                <h3 class="text-sm"> &#10162; <%= task.task %></h3>
-                            </div>
-
-                            <div class="flex-1 flex items-center justify-end space-x-4"> 
-                                <h3 class="text-sm text-gray-500 font-bold">Priority: <%= task.priority %></h3>  
-                                <h3 class="text-sm text-blue-500">Due: <%= task.date ? new Date(task.date).toLocaleDateString() : 'No due date' %></h3>  
-                                
-                                <button class="deleteButton" data-doc="<%= task._id %>">
-                                    <div class="w-6 h-6 relative">
-                                        <img src="/trashcan.svg" alt="delete icon" class="absolute inset-0 w-full h-full object-contain">
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                    <% }); %>
-                </ul>
-            </div>
-
-            <!-- Second Column: Chores and Challenges -->
-            <div class="border-2 text-center shadow-lg rounded-md bg-white lg:p-6 col-span-1">
-                <div>
-                    <h1 class="text-2xl flex font-bold mb-6 font-sans">
-                        Chores
-                            <div class="w-12 h-12 relative ml-2"> 
-                                <img src="/tamarin-monkey.svg" alt="tamarin monkey" class="absolute inset-0 w-full h-full object-contain">
-                            </div>
-                        Challenges
-                    </h1>
-                </div>
-                <ul>
-                    <% tasks.forEach(task => { %>  
-                        <li class="flex justify-between p-2 border-r-xl">
-                            <div class="flex-1 flex items-center space-x-4">
-                                <!-- <div class="w-6 h-6 relative">
-                                    <img src="/task-list.svg" alt="task icon" class="absolute inset-0 w-full h-full object-contain">
-                                </div> -->
-                                <h3 class="text-sm">&#10132; <%= task.task %></h3>
-                            </div>
-
-                            <div class="flex-1 flex items-center justify-end space-x-4">
-                                <h3 class="text-sm text-gray-500 font-bold">Completed? : <%= task.priority %></h3>  
-                                <input type="checkbox" name="Completed?" id="taskComplete">
-                                <button class="deleteButton" data-doc="<%= task._id %>">
-                                    <div class="w-6 h-6 relative">
-                                        <img src="/trashcan.svg" alt="delete icon" class="absolute inset-0 w-full h-full object-contain">
-                                    </div>
-                                </button>
-                            </div>
-                        </li>
-                    <% }); %>
-                </ul>
-            </div>
-
-            <!-- Notes Column -->
-            <div class="border-2 p-4 shadow-lg rounded-md bg-white col-span-1"> 
-                <h1 class="text-2xl font-bold">Notes</h1>
-                <div class="text-left">
-                    <p class="m-2"> &#10536; All notes will be here</p>
-                    <p class="m-2"> &#10140; Notes can be expandable (Modals?)</p>
-                    <p class="m-2"> &#10132;Highlighting based on priority</p>
-                    <p class="m-2"> &#10132; Checkbox functionality still lacking</p>
-                    <p class="m-2"> &darr; Impliment 'edit' functionality</p>
-                    <p class="m-2"> &darr; Maybe let's browse around for designs</p>
-                    <p class="m-2"> &#10162; Maybe adding some progress charts</p>
-                </div>
-            </div>
-
-
-            <div class="border-2 p-4 shadow-lg rounded-md bg-white col-span-1"> 
-                <h1 class="text-2xl font-bold">Notes</h1>
-                <div class="text-left">
-                    <p class="m-2"> &#10536; All notes will be here</p>
-                    <p class="m-2"> &#10140; Notes can be expandable (Modals?)</p>
-                    <p class="m-2"> &#10132;Highlighting based on priority</p>
-                    <p class="m-2"> &#10132; Checkbox functionality still lacking</p>
-                    <p class="m-2"> &darr; Impliment 'edit' functionality</p>
-                    <p class="m-2"> &darr; Maybe let's browse around for designs</p>
-                    <p class="m-2"> &#10162; Maybe adding some progress charts</p>
-                </div>
-            </div>
-
+<div id="main-wrapper" class="grid lg:grid-cols-2 gap-6 items-center p-6">   
+    
+    <div class="time-date">  
+        <div class="border-2 text-center shadow-sm font-bold text-center">
+            <h1 class="text-4xl m-2 w-1/4 ">Countdown Timer</h1>
+            <h1 class="text-3xl m-2">35:00</h1>
+            <button class="border-2 p-2 m-2" >Start</button>
+            <button class="border-2 p-2 m-2" >Reset</button>
         </div>
     </div>
+    
 
-</div>
+
+
+    <div class="border-2 text-center p-2 shadow-sm"> <!-- Daily Tasks -->
+        <div>
+            <h1 class="text-2xl font-bold border-b-4">Daily Tasks</h1>
+        </div>
+        <ul>
+            <% tasks.forEach(task => { %>  
+                <li class="flex justify-between p-2 border-b">
+                    <div class="flex-1 flex items-center space-x-4">
+                        <div class="w-6 h-6 relative">
+                            
+                            <!-- <img src="/task-list.svg" alt="trashcan" class="absolute inset-0 w-full h-full object-contain"> -->
+                        </div>
+                        
+                        <h3 class="text-sm"><span class="font-bold"></span> &#10162; <%= task.task %></h3>
+                    </div>
+    
+                    <div class="flex-1 flex items-center justify-end space-x-4"> <!-- Date/Delete section -->
+                        <h3 class="text-sm text-blue-500">Due: <%= task.date ? new Date(task.date).toLocaleDateString() : 'No due date' %></h3>  
+                        
+                        <button class="deleteButton p-2" data-doc="<%= task._id %>">
+                            <div class="w-6 h-6 relative">
+                                <img src="/trashcan.svg" alt="trashcan" class="absolute inset-0 w-full h-full object-contain">
+                            </div>
+                        </button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
 
     <script>
         const deleteButtons = document.querySelectorAll('.deleteButton');
-
+    
         deleteButtons.forEach(deleteButton => {
             deleteButton.addEventListener('click', (e) => {
-                const endpoint = `/delete/${deleteButton.dataset.doc}`;
-
+                const taskId = deleteButton.dataset.doc; // Fetch the task ID from data-doc
+                const endpoint = `/delete/${taskId}`; // Correct endpoint with task ID
+    
                 fetch(endpoint, {
                     method: 'DELETE'
                 })
@@ -123,14 +57,34 @@
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
-                    return response.json();
+                    return response.json(); // Parse JSON response
                 })
                 .then((data) => {
-                    window.location.href = data.redirect;
+                    window.location.href = data.redirect; // Redirect on successful delete
                 })
                 .catch((err) => console.log('Error:', err));
             });
         });
     </script>
 
+
+    
+
+    <!-- <div class="border-2 text-center p-4 shadow-sm">
+        <h2 class="font-bold">Food for thought</h2>
+        <p>"I've grown to realize that, the more I practice, The luckier I get" - Thomas Jefferson</p>
+    </div> -->
+
+    <!-- Notes -->
+    <!-- <div class="border-2 p-4 shadow-sm"> 
+        <h1 class="text-2xl font-bold" >Notes</h1>
+        <div class="text-left">
+            <p class="m-2"> &#10536; All notes will be here</p>
+            <p class="m-2"> &#10140; Notes can be expandable</p>
+            <p class="m-2"> &#10162; Maybe adding some progress charts</p>
+            <p class="m-2"> &#10132; What else can I think of?</p>
+            <p class="m-2"> &darr; Dont forget to add delete functionality</p>
+            <p class="m-2"> &darr; Maybe lets browse around for designs</p>
+        </div>
+    </div> -->
 </div>

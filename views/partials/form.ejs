@@ -1,44 +1,28 @@
+<div class="formHead flex justify-between items-center p-2"> 
 
-<div class=" formHead flex flex-col justify-center content-end items-center p-4"> 
+    <form action="/add-task" method="post" id="task-input" class="flex flex-1 flex-wrap flex-col md:flex-row items-center justify-start m-2 space-x-6">
 
-    <form action="/add-task" method="post" id="task-input" class=" flex flex-col-4 md:flex-row items-center justify-center md:space-y-0 md:space-x-6 w-full mx-auto rounded-md p-6"> 
-
-        <div class="task w-full md:w-1/3 flex flex-col justify-end"> <!-- Task Input -->
-            <label for="task" class="mb-1">Task</label>
-            <input type="text" name="task" id="task-input" class="border-2 p-2 shadow-inner w-full rounded-xl" placeholder="Enter a task">
+        <div class="task m-2 rounded-xl">
+            <label for="task-input">Task</label>
+            <input type="text" name="task" id="task-input" class="border-2 p-2 shadow-inner">
         </div>
 
-        <div class="flex space-x-2 w-full md:w-2/3 gap-2"> <!-- Calendar -->
-            <div class="date w-full flex flex-col justify-end"> 
-                <label for="date" class="mb-1">Date</label>
-                <input type="date" name="date" id="date-input" class="border-2 w-full rounded-xl p-2" required> 
-            </div>
-    
-            <div class="priority w-full flex flex-col justify-end"> <!-- Priority options -->
-                <label for="priority" class="mb-1">Priority</label>
-                <select name="priority" class="border-2 p-2 w-full rounded-xl"> 
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                </select>
-            </div>
+        <div class="date m-2">
+            <label for="date-input">Date</label>
+            <input type="date" name="date" id="date-input" class="border-2 rounded-xl p-2">
         </div>
-
-        <div class="submit w-full md:w-1/3 flex flex-col items-center"> <!-- Submit button -->
-            <button type="submit" class="w-1/2 p-2 mt-6 bg-blue-500 text-white rounded-xl">Submit</button>
-        </div>
-    
+                    
+        <button type="submit" class="border-2 mx-auto md:mx-0 p-2 m-2 bg-blue-500 text-white rounded-xl">Submit</button>
     </form>
-
-</div>
     
-
+    <!-- Time and Date section -->
+    <!-- <div class="flex justify-center items-center space-x-6"> 
+        <div class="text-center shadow-sm p-4"> 
+            <h1 id="dateDisplay" class="text-3xl"></h1>
+        </div>
+        <div class="text-center shadow-sm p-4"> 
+            <h1 id="timeDisplay" class="text-3xl"></h1>
+        </div>
+    </div> -->
 </div>
 
-
-
-<!-- DEfault date -->
-<script>
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('date-input').value = today;
-</script>

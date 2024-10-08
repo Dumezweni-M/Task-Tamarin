@@ -5,12 +5,14 @@ const morgan = require('morgan'); //For debugging and monitoring
 const mongodb = require('mongodb');
 const mongoose = require('mongoose')
 
+
 const Task = require('./models/tasks')
+
 
 const app = express();
 
 // Const URI
-const dbURI = 'mongodb+srv://.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
+const dbURI = 'mongodb+srv://slowmonkey:test123456@slowmonkey.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
 mongoose.connect(dbURI)
     .then((result) => app.listen(PORT))
     .catch((err) => console.log('Connection Issues --------> ' + err))
@@ -29,13 +31,13 @@ app.use(morgan('dev'));
 //Get items already stored in db
 app.get('/', (req, res) => {
     Task.find()
-        .sort({ date: 1})   //Matches database entry.
+        .sort({ date: 1 })   // Sort tasks by date
         .then(tasks => {
-            res.render('index', {tasks});
+            res.render('index', { tasks});                
         })
         .catch(err => {
             console.log('Zero tasks found dude!: ', err);
-            res.status(500).send('Server Error')
+            res.status(500).send('Server Error');
         });
 });
 
