@@ -1,4 +1,6 @@
-const PORT = 3000;
+require('dotenv').config();
+
+// const PORT = 3000;
 
 const express = require('express');
 const morgan = require('morgan'); //For debugging and monitoring
@@ -11,11 +13,15 @@ const Task = require('./models/tasks')
 
 const app = express();
 
-// Const URI
-const dbURI = 'mongodb+srv://slowmonkey:test123456@slowmonkey.8xls6.mongodb.net/productivity?retryWrites=true&w=majority&appName=SlowMonkey';
-mongoose.connect(dbURI)
-    .then((result) => app.listen(PORT))
-    .catch((err) => console.log('Connection Issues --------> ' + err))
+// Use environment variables from .env
+const PORT = process.env.PORT || 3000;
+const dbURI = process.env.MONGO_URI;  // MongoDB URI from .env
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(result => app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    }))
+    .catch(err => console.log('Connection Issues -------->', err));
 
 
 // Register view engine
@@ -25,8 +31,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true})); //POST undefined if you leave this out
 app.use(morgan('dev'));
-
-
 
 //Get items already stored in db
 app.get('/', (req, res) => {
