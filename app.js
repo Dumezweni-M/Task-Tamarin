@@ -13,6 +13,12 @@ const Task = require('./models/tasks')
 
 const app = express();
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack); // Log the error stack for debugging
+    res.status(500).send('Something went wrong!');
+});
+
 // Use environment variables from .env
 const PORT = process.env.PORT || 3000;
 const dbURI = process.env.MONGO_URI;  // MongoDB URI from .env
