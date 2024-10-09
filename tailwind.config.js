@@ -2,7 +2,7 @@
 module.exports = {
   content: [ 
     "./views/**/*.ejs",
-    "./public/**/*.{html, js}"],
+    "./public/**/*.{html, js, svg}"],
   theme: {
     extend: {
       fontFamily: {
