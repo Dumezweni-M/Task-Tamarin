@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
 
 const dbURI = process.env.MONGO_URI;  // MongoDB URI from .env
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI)
     .then(result => app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
     }))

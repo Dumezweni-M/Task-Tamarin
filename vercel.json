@@ -15,8 +15,5 @@
       "src": "/(.*)",
       "dest": "app.js"
     }
-  ],
-  "css": {
-    "includeFiles": ["styles.css"]
-  }
+  ]
 }
