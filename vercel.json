@@ -15,8 +15,5 @@
       "src": "/(.*)",
       "dest": "app.js"
     }
-  ],
-  "scripts": {
-    "build": "npm run build"
-  }
+  ]
 }
