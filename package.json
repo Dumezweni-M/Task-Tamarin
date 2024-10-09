@@ -2,11 +2,13 @@
   "name": "task-tamarin",
   "version": "1.0.0",
   "description": "Productivity Assistant App",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "build-css": "tailwindcss build src/styles.css -o public/styles.css",
     "dev": "nodemon app.js",
-    "node-css-build": "npm run build-css && npm run dev"
+    "node-css-build": "npm run build-css && npm run dev",
+    "start": "node app.js",
+    "build": "npm run build"
   },
   "keywords": [],
   "author": "",

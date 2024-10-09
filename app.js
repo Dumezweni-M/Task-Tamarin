@@ -1,17 +1,22 @@
 require('dotenv').config();
 
-// const PORT = 3000;
+const PORT = 3000;
 
 const express = require('express');
 const morgan = require('morgan'); //For debugging and monitoring
 const mongodb = require('mongodb');
 const mongoose = require('mongoose')
+const path = require('path');
+
+
+
 
 
 const Task = require('./models/tasks')
 
 
 const app = express();
+app.set('views', path.join(__dirname, 'views'));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -20,7 +25,7 @@ app.use((err, req, res, next) => {
 });
 
 // Use environment variables from .env
-const PORT = process.env.PORT || 3000;
+
 const dbURI = process.env.MONGO_URI;  // MongoDB URI from .env
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
