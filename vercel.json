@@ -18,5 +18,8 @@
   ],
   "build": {
     "command": "npm run build-css && npm run start"
+  },
+  "css": {
+    "includeFiles": ["styles.css"]
   }
 }
