@@ -26,8 +26,7 @@ app.use((err, req, res, next) => {
 
 // Use environment variables from .env
 
-const dbURI = 'mongodb+srv://slowmonkey:test123456@slowmonkey.8xls6.mongodb.net/all-about?retryWrites=true&w=majority&appName=SlowMonkey';
-
+const dbURI = process.env.MONGO_URI;  // MongoDB URI from .env
 
 mongoose.connect(dbURI)
     .then(result => app.listen(PORT, () => {
