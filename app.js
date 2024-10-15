@@ -85,6 +85,26 @@ app.delete('/delete/:id', (req, res) => {
 });
 
 
+//Edit tasks
+app.put('/edit/:id', (req, res) => {
+    const taskId = req.params.id; // Get task ID
+    const updatedTaskInfo = req.body; // Get the updated task information from the request body
+
+    Task.findByIdAndUpdate(taskId, updatedTaskInfo, { new: true }) // Find the task and update it
+        .then(updatedTask => {
+            if (!updatedTask) {
+                return res.status(404).send('Task not found'); // Handle case where task does not exist
+            }
+            res.json({ redirect: '/' }); // Redirect or send a success response
+            console.log('Task updated:', updatedTask);
+        })
+        .catch(err => {
+            console.log('Update was not successful', err);
+            res.status(500).send('Error updating the task'); // Handle any errors
+        });
+});
+
+
 // 404 
 app.use((req, res) => {
     res.status(404).render('404', { name: '404'})

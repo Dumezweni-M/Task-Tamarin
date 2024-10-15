@@ -4,7 +4,7 @@
   "description": "Productivity Assistant App",
   "main": "app.js",
   "scripts": {
-    "build-css": "tailwindcss build src/styles.css -o public/styles.css --minify",
+    "build-css": "tailwindcss build src/styles.css -o public/styles.css --minify --watch",
     "dev": "nodemon app.js",
     "node-css-build": "npm run build-css && npm run dev",
     "start": "node app.js",
